@@ -127,7 +127,7 @@ instala React.
 
 ## Iteración 11: Construye el ruteo con "react-router-dom"
 
-|   Ruta   | Componente   |
-|----------------------------|
-| `/` | Página de inicio |
-| `/:idLibro` | Página del libro elegido |
+| Ruta      |      Componente     |
+|-----------|:-------------------:|
+| /         |   Página de inicio  |
+| /:idLibro | Página del libro ID |
