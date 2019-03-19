@@ -87,7 +87,7 @@ Utiliza Postman para probar cada ruta y revisa en MongoDB Compass ó en "Mongo S
 ## Iteración 7: Crear las rutas para manejar las solicitudes
 
 - Importa los modelos a tu index.js
-- Crea las diferentes rutas para cada colección. Por ejemplo, para "estudiantes":
+- Crea las diferentes rutas para cada colección:
 
 |   Route   | HTTP Verb |   Description   |
 |-----------|-----------|-----------------|
