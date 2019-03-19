@@ -53,7 +53,7 @@ $ npm install express mongoose nodemon
 - Importa los modelos a tu index.js
 - Crea las diferentes rutas para cada colección. Por ejemplo, para "estudiantes":
 
-|   Route   | HTTP Verb |   Description   |
+|   Ruta   | HTTP Verbo |  Descripción   |
 |-----------|-----------|-----------------|
 | `/libros` |    GET    | Entrega todos los libros |
 | `/libros/nuevo` |    POST    | Agrega un libro |
@@ -71,7 +71,7 @@ Utiliza Postman para probar cada ruta y revisa en MongoDB Compass ó en "Mongo S
 
 - Deberás crear 4 autores, conteniendo estas propiedades.
 
-· **Libro**
+· **Autor**
 ```
     - ID Autor: (Number)
     - Nombre: (String)
@@ -97,3 +97,37 @@ Utiliza Postman para probar cada ruta y revisa en MongoDB Compass ó en "Mongo S
 | `/autores/:id/editar` |    POST    | Actualiza un autor |
 | `/autores/:id/borrar` |    POST    | Borra un autor |
 
+
+# [FRONTEND] REACT
+
+## Iteración 8: Crear carpeta /client e instalar React
+
+- Inicia creando una carpeta llamada "client" dentro de tu proyecto. Sitúate en la terminal dentro de esta carpeta e
+instala React.
+
+```shell
+   $ cd client
+   $ create-react-app .
+```
+
+- Nota que **tienes dos package.json**. Uno dentro de /client y otro en la raiz del proyecto. Uno estará vinculado con la configuración de React y el otro con el servidor.
+
+## Iteración 9: Conecta tu aplicación de React con el servidor a través del package.json
+
+- Haz que tu servidor se conecte en el puerto 3002.
+- Abre el "package.json" dentro de tu carpeta /client y coloca:
+
+```javascript
+  "proxy":"http://localhost:3002"
+```
+
+## Iteración 10: Construye cuatro componentes. "Home" y "Book", envueltos ambos entre "Header" y "Footer"
+
+- Crea cada uno, partiendo de App.
+
+## Iteración 11: Construye el ruteo con "react-router-dom"
+
+|   Ruta   | Componente   |
+|----------------------------|
+| `/` | Página de inicio |
+| `/:idLibro` | Página del libro elegido |
