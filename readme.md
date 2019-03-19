@@ -44,8 +44,8 @@ $ npm install express mongoose nodemon
 ## Iteración 3: Crear los modelos
 
 - Crea una carpeta llamada "models" 
-- Crea un archivo por cada colección. Por ejemplo: "libro.js".
-- En cada archivo, crea un "schema", incluyendo las propiedades de cada colección. 
+- Crea un archivo "libro.js".
+- Crea un "schema", incluyendo las propiedades de cada colección. 
 - Finalmente, harás un "export" al modelo, que permite la accessibilidad del mismo.
 
 ## Iteración 4: Crear las rutas para manejar las solicitudes
