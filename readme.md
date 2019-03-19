@@ -123,11 +123,34 @@ instala React.
 
 ## Iteración 10: Construye cuatro componentes. "Home" y "Book", envueltos ambos entre "Header" y "Footer"
 
-- Crea cada uno, partiendo de App.
+- Importa los 4 componentes en App.js
+- Renderizalos dentro de App.js
+
 
 ## Iteración 11: Construye el ruteo con "react-router-dom"
+
+- Crea una ruta "/" que renderice el componente "Home"
+- Crea una ruta "/:idLibro" que renderice el componente "Book". Recordar que el ":" se refiere a un 
+parámetro que envía el usuario para identificar qué libro quiere. 
+
+Ejemplo: "/libro001"
 
 | Ruta      |      Componente     |
 |-----------|:-------------------:|
 | /         |   Página de inicio  |
 | /:idLibro | Página del libro ID |
+
+## Iteración 12: Conéctate al API de tu Backend de libros y renderiza los datos en Home
+
+- Utilizar "ComponentDidMount" para capturar los datos dentro del componente de React
+- Puedes utilizar "Axios" para realizar el "fetch" o la descarga
+- Renderiza los datos de todos los libros en Home
+- Renderiza el dato específico del libro que pedimos vía URL, en Book
+
+## BONUS [REDUX]
+
+## Iteración 13: Convierte la aplicación bajo Redux
+
+- Utiliza "redux" y "react-redux" dentro de tu proyecto de React
+
+
