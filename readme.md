@@ -1,4 +1,4 @@
-****# Ejercicio: Aplicación "Library"
+# Ejercicio: Aplicación "Library"
 
 Crearemos una aplicación bajo el esquema MERN (MongoDB + Express + React + Node).
 
