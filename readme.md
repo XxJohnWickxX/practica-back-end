@@ -1,11 +1,11 @@
-# Ejercicio: Aplicación "Library"
+****# Ejercicio: Aplicación "Library"
 
 Crearemos una aplicación bajo el esquema MERN (MongoDB + Express + React + Node).
 
 Primero, se realizará el Backend. Posteriormente, el Frontend.
 
 
-![MERN](https://i.imgur.com/6X55Qbo.png)
+![Markdown](https://i.imgur.com/Zzrorh7.jpg)
 
 ## Requerimientos
 - NodeJS
@@ -17,17 +17,16 @@ Primero, se realizará el Backend. Posteriormente, el Frontend.
 
 ## Iteración 1: Crear la base de datos y propagar un mínimo de datos
 
-- Deberás crear 6 libros. Lo harás directamente desde tu terminal y conectándote a la base de datos 
-de MongoDB. Recuerda levantar el servicio mongod.
+- Deberás crear 8 libros. Lo harás directamente desde tu terminal y conectándote a la base de datos de MongoDB. Recuerda levantar el servicio mongod.
 
 · **Libro**
 ``` 
-    - ID Libro: (Number)
+    - ID Libro: (String)
     - Titulo: (String)
     - Páginas (Number)
     - Descripcion: (String)
+    - Autor (Object Id)
 ```
-
 
 ## Iteración 2: Preparar la aplicación
 
@@ -64,7 +63,6 @@ $ npm install express mongoose nodemon
 
 Utiliza Postman para probar cada ruta y revisa en MongoDB Compass ó en "Mongo Shell" que los datos se estén manipulando.
 
-
 # [BACKEND] Autores
 
 ## Iteración 5: Crear la base de datos y propagar un mínimo de datos
@@ -73,7 +71,7 @@ Utiliza Postman para probar cada ruta y revisa en MongoDB Compass ó en "Mongo S
 
 · **Autor**
 ```
-    - ID Autor: (Number)
+    - ID Autor: (String)
     - Nombre: (String)
 ```
 
@@ -84,7 +82,7 @@ Utiliza Postman para probar cada ruta y revisa en MongoDB Compass ó en "Mongo S
 - Crea un "schema", incluyendo las propiedades descritas anteriormente.
 - Haz un "export" al modelo, que permite la accessibilidad del mismo.
 
-## Iteración 7: Crear las rutas para manejar las solicitudes
+## Iteración 7: Crear las rutas para manejar las solicitudes de los autores
 
 - Importa los modelos a tu index.js
 - Crea las diferentes rutas para cada colección:
@@ -97,10 +95,43 @@ Utiliza Postman para probar cada ruta y revisa en MongoDB Compass ó en "Mongo S
 | `/autores/:id/editar` |    POST    | Actualiza un autor |
 | `/autores/:id/borrar` |    POST    | Borra un autor |
 
+# [BACKEND] Usuarios
+
+## Iteración 8: Crear la funcionalidad de usuarios
+
+-  Crea los usuarios (el modelo bajo el nombre de `usuario.js`) con las siguientes propiedades:
+
+· **Usuario**
+```
+    - Email: (String)
+    - Nombre: (String)
+    - Password: (String)
+    - Token: (String)
+```
+
+- Crea las rutas correspondientes a los usuarios:
+
+|   Route   | HTTP Verb |   Description   |
+|-----------|-----------|-----------------|
+| `/usuarios` |    GET    | Entrega todos los usuarios |
+| `/usuarios/nuevo` |    POST    | Agrega un usuario |
+| `/usuarios/:id` |    GET    | Entrega datos de ese usuario |
+| `/usuarios/:id/editar` |    POST    | Actualiza un usuario |
+| `/usuarios/:id/borrar` |    POST    | Borra un usuario |
+
+- Desarrolla las rutas de autenticación:
+
+|   Route   | HTTP Verb |   Description   |
+|-----------|-----------|-----------------|
+| `/usuario/login` |    POST    | Crea token en cliente y servidor |
+| `/usuarios/logout` |    GET    | Destruye el token en cliente y servidor |
+| `/usuarios/auth` |    GET    | Verifica si estás autenticado y si es así, entrega datos del usuario en cuestión |
+
+
 
 # [FRONTEND] REACT
 
-## Iteración 8: Crear carpeta /client e instalar React
+## Iteración 9: Crear carpeta /client e instalar React
 
 - Inicia creando una carpeta llamada "client" dentro de tu proyecto. Sitúate en la terminal dentro de esta carpeta e
 instala React.
@@ -121,36 +152,31 @@ instala React.
   "proxy":"http://localhost:3002"
 ```
 
-## Iteración 10: Construye cuatro componentes. "Home" y "Book", envueltos ambos entre "Header" y "Footer"
+## Iteración 10: Construye los componentes "Header" y "Footer"
 
-- Importa los 4 componentes en App.js
+- Crea e importa los 2 componentes en App.js
 - Renderizalos dentro de App.js
 
 
 ## Iteración 11: Construye el ruteo con "react-router-dom"
 
-- Crea una ruta "/" que renderice el componente "Home"
-- Crea una ruta "/:idLibro" que renderice el componente "Book". Recordar que el ":" se refiere a un 
-parámetro que envía el usuario para identificar qué libro quiere. 
-
-Ejemplo: "/libro001"
+- Crea una ruta "/" que renderice el componente "Inicio"
+- Crea una ruta "/:libro" que renderice el componente "Libro". Recordar que el ":" se refiere a un parámetro que envía el usuario para identificar qué libro quiere.
+- Crea una ruta para el "/perfil" que renderice el componente "Perfil".
+- Crea una ruta para el "/login" que obtenga el token del servidor y que renderice un componente "Login".
+- Crea una ruta para la creación de "usuarios" que renderice el componente "Registro".
 
 | Ruta      |      Componente     |
 |-----------|:-------------------:|
 | /         |   Página de inicio  |
-| /:idLibro | Página del libro ID |
+| /:libro | Página del libro ID |
+| /:perfil | Página del perfil del usuario |
+| /:login | Página del login del usuario |
+| /:registro | Página para registar un usuario |
 
-## Iteración 12: Conéctate al API de tu Backend de libros y renderiza los datos en Home
+## Iteración 12: Conéctate al API de tu Backend de libros y renderiza los datos en la página de "Inicio" y en "Libro".
 
 - Utilizar "ComponentDidMount" para capturar los datos dentro del componente de React
 - Puedes utilizar "Axios" para realizar el "fetch" o la descarga
-- Renderiza los datos de todos los libros en Home
-- Renderiza el dato específico del libro que pedimos vía URL, en Book
-
-## BONUS [REDUX]
-
-## Iteración 13: Convierte la aplicación bajo Redux
-
-- Utiliza "redux" y "react-redux" dentro de tu proyecto de React
-
-
+- Renderiza los datos de todos los libros en "Inicio"
+- Renderiza el dato específico del libro que pedimos vía URL, en "Libro".
