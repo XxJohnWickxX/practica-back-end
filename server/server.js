@@ -1,6 +1,7 @@
 // IMPORTACIONES
 const express = require('express');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser')
 
 const app = express()
 
@@ -8,6 +9,7 @@ mongoose.connect("mongodb://localhost:27017/library", {useNewUrlParser: true})
 // MIDDLEWARES
 
 app.use(express.json())
+app.use(cookieParser())
 
 
 // MODELOS
@@ -56,7 +58,7 @@ app.post('/api/autor/nuevo', (req, res) => {
         })
     })
 })
-app.get('/api/autor/IDAutor', (req, res) => {
+app.get('/api/autor/:IDAutor', (req, res) => {
     const autorABuscar = req.params.IDAutor
     Autor.find({IDAutor: autorABuscar}).then(datosautor =>{
         res.send(datosautor)
@@ -80,14 +82,33 @@ app.post('/api/usuarios/nuevo', (req, res) => {
         })
     })
 })
-app.get('/api/usuarios/:id', (req, res) => {
+app.get('/api/usuarios/:_id', (req, res) => {
     const usuarioABuscar = req.params.IDAutor
-    Autor.find({id: usuarioABuscar}).then(datosusuario =>{
+    Autor.find({_id: usuarioABuscar}).then(datosusuario =>{
         res.send(datousuario)
-
     })
-})
+}) 
 
+// RUTAS DE AUTENTICACION
+app.post('/api/usuarios/login', (req, res) => {
+    // 1.-ENCUENTRA EL CORREO
+    Usuario.findOne({'email': req.body.email}, (err, usuario) => {
+        if(!usuario) return res.json({loginSuccess:  false, message: 'E-mail incorrecto'})
+        
+        // 2.- Opten el pasword y compruebalo
+    usuario.comparePassword(req.body.password, (err, isMatch) => {
+        if(!isMatch) return res.json({loginSuccess: false, message:"Password erroneo"})
+    })
+        // 3.- Si todo es correcto genera un token}
+    usuario.generateToken((err, usuario) =>{
+        if(err) return res.status(400).send(err)
+        // AQUI SE GUARDA EL TOKEN COMO UN COOKIE
+        res.cookie('library_auth', usuario.token).status(200).json({loginSuccess: true})
+
+    })    
+    
+})
+})
 
 
 
