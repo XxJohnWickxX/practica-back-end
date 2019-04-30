@@ -1,0 +1,25 @@
+{
+  "name": "learning-library",
+  "version": "1.0.0",
+  "description": "Crearemos una aplicación bajo el esquema MERN (MongoDB + Express + React + Node).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server":"nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikenieva/learning-library.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikenieva/learning-library/issues"
+  },
+  "homepage": "https://github.com/mikenieva/learning-library#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.5.4",
+    "nodemon": "^1.18.11"
+  }
+}
